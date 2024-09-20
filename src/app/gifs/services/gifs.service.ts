@@ -6,7 +6,7 @@ import { Gif, SearchResponse } from '../interfaces/gifs.interface';
 export class GifsService {
   constructor( private http: HttpClient ) {
     this.loadLocalStorage()
-    this.searchTag(this._tagsHistory[0])
+
   }
 
   private gifs: Gif[] = [];
@@ -35,6 +35,7 @@ export class GifsService {
   public loadLocalStorage():void{
     if(!localStorage.getItem('history')) return
     this._tagsHistory =  JSON.parse(localStorage.getItem('history')!)
+    this.searchTag(this._tagsHistory[0])
   }
 
   get gifsList(){
